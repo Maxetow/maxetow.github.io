@@ -3,47 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Example HTML Page</title>
+    <title>Rainbow Text</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
         }
 
         h1 {
-            color: #3498db;
-        }
-
-        p {
-            line-height: 1.6;
-        }
-
-        .highlight {
-            background-color: #f8f9fa;
-            padding: 10px;
-            border-radius: 5px;
+            font-size: 3em;
+            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            background-clip: text;
+            color: transparent;
+            -webkit-background-clip: text; /* For Safari */
+            margin: 0;
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Welcome to My Example Page</h1>
-    </header>
-
-    <section>
-        <p>This is a simple example of an HTML page. It includes a header, a section, and some basic styling.</p>
-
-        <div class="highlight">
-            <p>This is a highlighted section.</p>
-        </div>
-
-        <p>You can customize and extend this page according to your needs!</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 My Example Page. All rights reserved.</p>
-    </footer>
-
+    <h1>Rainbow Text</h1>
 </body>
 </html>
