@@ -1,306 +1,327 @@
 <!DOCTYPE html>
-<html lang="en" class="None"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="UTF-8">
-  <title>Maxetow - Login</title>
-  <link rel="stylesheet" href="style.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxetow</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: linear-gradient(45deg, #2C3E50, #34495E);
+            color: #fff;
+        }
 
+        header {
+            position: relative;
+            text-align: center;
+            padding: 4em 0;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #fff;
+        }
+
+        header p {
+            font-size: 1.5em;
+            margin-top: 0.5em;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
+
+        nav a {
+            color: #fff;
+            font-size: 1.2em;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        section {
+            margin: 2em auto;
+            padding: 2em;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+            z-index: 1;
+        }
+
+        section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1em;
+            margin-top: 2em;
+        }
+
+        .project-card {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background: rgba(52, 148, 230, 0.9);
+            color: #fff;
+            z-index: 1;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Additional Styles */
+        form {
+            margin-top: 2em;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            margin-bottom: 1em;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1em;
+            margin-top: 2em;
+        }
+
+        .blog-post {
+            background-color: #fff;
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .resume-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote {
+            font-style: italic;
+            text-align: center;
+            margin: 2em 0;
+            color: #444;
+        }
+
+        .social-icons {
+            margin-top: 1em;
+            text-align: center;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1.2em;
+            }
+
+            nav a {
+                font-size: 1em;
+            }
+
+            .lightbox img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<section>
 
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+    <header>
+        <h1>Maxetow</h1>
+        <p>Welcome to a space where expertise meets innovation</p>
+    </header>
 
-  <section>
-        <!-- ... your existing content ... -->
+    <canvas id="interactive-bg"></canvas>
 
-        <div class="text-box">
-            <h2>Maxetow's Website</h2>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#resume">Resume</a>
+        <!-- Add more navigation links as needed -->
+    </nav>
 
-            <!-- Nice List -->
-            <ul class="nice-list">
-                <li>Max, just a young python dev. Who tried to do HTML</li>
-		<li>(Try to hower over the background with mouse ;) )</li>
-                <!-- Add more items as needed -->
-            </ul>
+    <section class="in-view" id="about">
+        <h2>About Me</h2>
+        <p>Welcome! I'm a dedicated professional with a passion for excellence and a commitment to innovation. With years of experience in my field, I bring a wealth of knowledge and a unique perspective to the table. My approach is rooted in a deep understanding of the industry, combined with a forward-thinking mindset that embraces new challenges and opportunities.
 
-            <!-- Boxes for Projects -->
-            <div class="project-box">
-                <h2>Website</h2>
-                <p>Make my website and description look good.</p>
-            </div>
-          <div class="project-box">
-                <h2>Learn</h2>
-                <p>I need to learn HTML, more python, understand databases.</p>
-            </div>
-          
-          <!-- Copyright Information -->
-            <footer>
-                <p>&copy; 2023 Maxetow. All rights reserved.</p>
-            </footer>
-        </div>
-
-        <!-- ... more content ... -->
+I believe in the power of collaboration and the importance of building strong relationships. My goal is to create an environment where ideas can thrive and success is a shared journey. Thank you for visiting, and I look forward to connecting with you!</p>
+        <div class="quote">“Efficiency through code; progress through programming.” - Maxetow</div>
     </section>
-    
-</body></html>
+
+    <section class="in-view" id="skills">
+        <h2>My Skills</h2>
+        <p>My technical skill set is comprehensive and includes,python, scratch, DBscript, html
+These skills enable me to deliver high-quality software and contribute to projects that demand a solid understanding of programming and web development.</p>
+    </section>
+
+    <section class="in-view" id="projects">
+        <h2>Projects (Work in progress)</h2>
+        <div class="projects">
+            <div class="project-card" onclick="openLightbox('https://picsum.photos/800/600', 'Project 1')">
+                <img src="https://picsum.photos/800/600" alt="Project 1">
+            </div>
+            <div class="project-card" onclick="openLightbox('https://picsum.photos/800/601', 'Project 2')">
+                <img src="https://picsum.photos/800/601" alt="Project 2">
+            </div>
+            <!-- Add more project cards as needed -->
+        </div>
+    </section>
+
+    <section class="in-view" id="blog">
+        <h2>Blog(Work in progress)</h2>
+        <div class="blog-posts">
+            <div class="blog-post">
+                <h3>Still in dev</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac ligula at mi fermentum aliquet.</p>
+            </div>
+            <div class="blog-post">
+                <h3>Blog Post 2</h3>
+                <p>Quisque auctor efficitur sem, vel laoreet turpis gravida sit amet. Suspendisse ut eros vel elit varius volutpat.</p>
+            </div>
+            <!-- Add more blog posts as needed -->
+        </div>
+    </section>
+
+    <section class="in-view" id="resume">
+        <h2>Resume(Work in progress)</h2>
+        <div class="resume-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac ligula at mi fermentum aliquet. Quisque auctor efficitur sem, vel laoreet turpis gravida sit amet. Suspendisse ut eros vel elit varius volutpat. Nulla facilisi.</p>
+            <!-- Add more resume content as needed -->
+        </div>
+    </section>
+
+    <div class="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImage" src="" alt="Project Lightbox">
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Maxetow. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            /* JavaScript Code Goes Here */
+        });
+
+        function openLightbox(imageSrc, projectName) {
+            document.getElementById('lightboxImage').src = imageSrc;
+            document.querySelector('.lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.querySelector('.lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
