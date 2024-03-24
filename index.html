@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap">
     <style>
         /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #f4f4f4;
+        }
+
         body {
             font-family: 'Quicksand', sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background: linear-gradient(45deg, #2C3E50, #34495E);
-            color: #fff;
+            background: var(--background-color);
+            color: #333;
         }
 
         header {
@@ -37,8 +43,7 @@
             opacity: 0.8;
         }
 
-        canvas {
-            display: block;
+        canvas#interactive-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -70,7 +75,7 @@
         section {
             margin: 2em auto;
             padding: 2em;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
             opacity: 0;
@@ -85,8 +90,8 @@
         }
 
         h2 {
-            color: #333;
-            border-bottom: 2px solid #3498db;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 0.5em;
             margin-bottom: 1em;
         }
@@ -144,7 +149,7 @@
         footer {
             text-align: center;
             padding: 1em 0;
-            background: rgba(52, 148, 230, 0.9);
+            background: var(--primary-color);
             color: #fff;
             z-index: 1;
         }
@@ -259,8 +264,7 @@ I believe in the power of collaboration and the importance of building strong re
 
     <section class="in-view" id="skills">
         <h2>My Skills</h2>
-        <p>My technical skill set is comprehensive and includes,python, scratch, DBscript, html
-These skills enable me to deliver high-quality software and contribute to projects that demand a solid understanding of programming and web development.</p>
+        <p>My technical skill set is comprehensive and includes Python, Scratch, DBscript, HTML. These skills enable me to deliver high-quality software and contribute to projects that demand a solid understanding of programming and web development.</p>
     </section>
 
     <section class="in-view" id="projects">
@@ -325,3 +329,4 @@ These skills enable me to deliver high-quality software and contribute to projec
     </script>
 </body>
 </html>
+
