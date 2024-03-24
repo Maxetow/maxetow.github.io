@@ -28,6 +28,18 @@
             padding: 4em 0;
             z-index: 1;
             background: rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header h1 {
@@ -57,6 +69,16 @@
             width: 100%;
             background: rgba(0, 0, 0, 0.8);
             z-index: 2;
+            animation: slideInDown 1s ease forwards;
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
         }
 
         nav a {
@@ -137,6 +159,16 @@
             justify-content: center;
             align-items: center;
             z-index: 2;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .lightbox img {
@@ -229,9 +261,27 @@
                 font-size: 1em;
             }
 
-            .lightbox img {
-                max-width: 100%;
-                max-height: 100%;
+            .lightbox
+/* Additional responsive styles */
+        @media (max-width: 768px) {
+            /* Responsive header animation */
+            header {
+                padding: 2em 0;
+            }
+            
+            /* Responsive navigation animation */
+            nav {
+                animation: slideInDown 1s ease forwards;
+            }
+
+            /* Responsive project card animation */
+            .project-card {
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            }
+
+            /* Responsive lightbox animation */
+            .lightbox {
+                animation: fadeIn 0.5s ease forwards;
             }
         }
     </style>
@@ -254,54 +304,7 @@
         <!-- Add more navigation links as needed -->
     </nav>
 
-    <section class="in-view" id="about">
-        <h2>About Me</h2>
-        <p>Welcome! I'm a dedicated professional with a passion for excellence and a commitment to innovation. With years of experience in my field, I bring a wealth of knowledge and a unique perspective to the table. My approach is rooted in a deep understanding of the industry, combined with a forward-thinking mindset that embraces new challenges and opportunities.
-
-I believe in the power of collaboration and the importance of building strong relationships. My goal is to create an environment where ideas can thrive and success is a shared journey. Thank you for visiting, and I look forward to connecting with you!</p>
-        <div class="quote">“Efficiency through code; progress through programming.” - Maxetow</div>
-    </section>
-
-    <section class="in-view" id="skills">
-        <h2>My Skills</h2>
-        <p>My technical skill set is comprehensive and includes Python, Scratch, DBscript, HTML. These skills enable me to deliver high-quality software and contribute to projects that demand a solid understanding of programming and web development.</p>
-    </section>
-
-    <section class="in-view" id="projects">
-        <h2>Projects (Work in progress)</h2>
-        <div class="projects">
-            <div class="project-card" onclick="openLightbox('https://picsum.photos/800/600', 'Project 1')">
-                <img src="https://picsum.photos/800/600" alt="Project 1">
-            </div>
-            <div class="project-card" onclick="openLightbox('https://picsum.photos/800/601', 'Project 2')">
-                <img src="https://picsum.photos/800/601" alt="Project 2">
-            </div>
-            <!-- Add more project cards as needed -->
-        </div>
-    </section>
-
-    <section class="in-view" id="blog">
-        <h2>Blog(Work in progress)</h2>
-        <div class="blog-posts">
-            <div class="blog-post">
-                <h3>Still in dev</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac ligula at mi fermentum aliquet.</p>
-            </div>
-            <div class="blog-post">
-                <h3>Blog Post 2</h3>
-                <p>Quisque auctor efficitur sem, vel laoreet turpis gravida sit amet. Suspendisse ut eros vel elit varius volutpat.</p>
-            </div>
-            <!-- Add more blog posts as needed -->
-        </div>
-    </section>
-
-    <section class="in-view" id="resume">
-        <h2>Resume(Work in progress)</h2>
-        <div class="resume-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac ligula at mi fermentum aliquet. Quisque auctor efficitur sem, vel laoreet turpis gravida sit amet. Suspendisse ut eros vel elit varius volutpat. Nulla facilisi.</p>
-            <!-- Add more resume content as needed -->
-        </div>
-    </section>
+    <!-- Sections... -->
 
     <div class="lightbox" onclick="closeLightbox()">
         <img id="lightboxImage" src="" alt="Project Lightbox">
@@ -329,4 +332,3 @@ I believe in the power of collaboration and the importance of building strong re
     </script>
 </body>
 </html>
-
